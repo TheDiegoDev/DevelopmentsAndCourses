@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "126658286986",
+    "project_id": "loguin-devandcourse",
+    "storage_bucket": "loguin-devandcourse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126658286986:android:99a54ef32ad28565aea473",
+        "android_client_info": {
+          "package_name": "diego.guinea.desarrolloscursos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126658286986-djv6mbt7j561pk6rdmbo3d8ecfag491s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "diego.guinea.desarrolloscursos",
+            "certificate_hash": "e46d81a0ba0a2da43df018bd96868dd2c0124095"
+          }
+        },
+        {
+          "client_id": "126658286986-91gjgp3dak25knn85ldaob3vdls3odq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4ObWJNc-E1G9CojQFaVvxl8SUoQ3dojc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126658286986-91gjgp3dak25knn85ldaob3vdls3odq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
