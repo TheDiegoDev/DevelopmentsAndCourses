@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import diego.guinea.desarrolloscursos.ui.LoginActivity
 
 private var loadingDialog: Dialog? = null
 
