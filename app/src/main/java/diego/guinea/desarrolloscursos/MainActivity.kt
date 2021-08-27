@@ -33,6 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDialog() {
         hideLoading()
-        loadingDialog = this.showAnimationDialog()
+        loadingDialog = this.showRegisterDialog()
     }
 }
