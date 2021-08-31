@@ -5,7 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import androidx.core.graphics.drawable.toDrawable
 
-fun Context.showAnimationDialog(): Dialog {
+fun Context.showRegisterDialog(): Dialog {
     val progressDialog = Dialog(this)
     progressDialog.let {
         it.show()
