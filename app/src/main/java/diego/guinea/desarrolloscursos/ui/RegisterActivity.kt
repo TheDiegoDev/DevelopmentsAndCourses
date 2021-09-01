@@ -18,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setUp() {
-        textRegistrate.setOnClickListener {
+        buttonRegistro.setOnClickListener {
             if (editTextTextEmailAddress.text.isNotEmpty() &&
                     editTextPhone.text.isNotEmpty() &&
                     editTextTextPassword2.text.isNotEmpty() &&

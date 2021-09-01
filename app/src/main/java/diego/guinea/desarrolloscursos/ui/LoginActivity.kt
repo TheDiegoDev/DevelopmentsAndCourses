@@ -18,21 +18,24 @@ class LoginActivity : AppCompatActivity() {
         setUp()
     }
 
-
-
     private fun setUp() {
         val sp = getSharedPreferences("user", Context.MODE_PRIVATE)
         if (sp.getString("active", "") == "true"){
             firebaseAuth(sp.getString("email","").toString(),sp.getString("password","").toString())
+        }else{
+            buttonsClick(sp)
         }
+    }
 
+    private fun buttonsClick(sp: SharedPreferences) {
         buttonEntrar.setOnClickListener {
 
             if (editTextEmail.text.isNotEmpty() &&
-                    editTextTextPassword.text.isNotEmpty()){
+                editTextTextPassword.text.isNotEmpty()
+            ) {
                 rememberUser(sp)
-                firebaseAuth(editTextEmail.text.toString(),editTextTextPassword.text.toString())
-            }else{
+                firebaseAuth(editTextEmail.text.toString(), editTextTextPassword.text.toString())
+            } else {
                 showAlert()
             }
         }

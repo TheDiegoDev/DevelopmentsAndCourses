@@ -106,15 +106,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/textRegistrate"
+    <Button
+        android:id="@+id/buttonRegistro"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
+        android:backgroundTint="#2196F3"
         android:fontFamily="@font/faster_one"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:text="Registrarte"
+        android:text="Registrate"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
