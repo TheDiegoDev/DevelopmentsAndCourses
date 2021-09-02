@@ -5,33 +5,51 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import diego.guinea.desarrolloscursos.R
 import kotlinx.android.synthetic.main.register_activity.*
 
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_activity)
+        auth = Firebase.auth
         setUp()
     }
 
     private fun setUp() {
         buttonRegistro.setOnClickListener {
-            if (editTextTextEmailAddress.text.isNotEmpty() &&
-                    editTextPhone.text.isNotEmpty() &&
-                    editTextTextPassword2.text.isNotEmpty() &&
-                    editTextTextPassword3.text.isNotEmpty() &&
-                    editTextTextPersonName.text.isNotEmpty() &&
-                    editTextTextPassword2.text == editTextTextPassword3.text){
+            if (editTextRegisterEmail.text.isNotEmpty() &&
+                    editTextRegisterPhone.text.isNotEmpty() &&
+                    editTextRegisterPassword.text.isNotEmpty() &&
+                    editTextRegsiterPasswordRepeat.text.isNotEmpty() &&
+                    editTextRegisterName.text.isNotEmpty() &&
+                    editTextRegisterPassword.text.toString() == editTextRegsiterPasswordRepeat.text.toString()){
 
-                FirebaseAuth.getInstance()
-                    .createUserWithEmailAndPassword(editTextTextEmailAddress.text.toString(),
-                        editTextTextPassword2.text.toString()).addOnCompleteListener {
-                            if (it.isSuccessful){showHome(it.result?.user?.email ?: "", ProviderType.BASIC)}
-                            else{showAlert()}
+                        val email = editTextRegisterEmail.text.toString()
+                        val passw = editTextRegisterPassword.text.toString()
+
+                auth.createUserWithEmailAndPassword(email, passw)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            showHome(email, ProviderType.BASIC)
+                        } else {
+                            showAlert()
+                        }
                     }
+
+//                FirebaseAuth.getInstance()
+//                    .createUserWithEmailAndPassword(editTextTextEmailAddress.text.toString(),
+//                        editTextTextPassword2.text.toString()).addOnCompleteListener {
+//                            if (it.isSuccessful){showHome(it.result?.user?.email ?: "", ProviderType.BASIC)}
+//                            else{showAlert()}
+//                    }
             }else{
                 showAlert()
             }
