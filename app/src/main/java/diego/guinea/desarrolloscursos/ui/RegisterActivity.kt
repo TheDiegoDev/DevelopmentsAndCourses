@@ -1,6 +1,8 @@
 package diego.guinea.desarrolloscursos.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import diego.guinea.desarrolloscursos.R
+import kotlinx.android.synthetic.main.loguin_activity.*
 import kotlinx.android.synthetic.main.register_activity.*
 
 
@@ -31,6 +34,9 @@ class RegisterActivity : AppCompatActivity() {
                     editTextRegisterName.text.isNotEmpty() &&
                     editTextRegisterPassword.text.toString() == editTextRegsiterPasswordRepeat.text.toString()){
 
+                        val sp = getSharedPreferences("user", Context.MODE_PRIVATE)
+                        rememberUser(sp)
+
                         val email = editTextRegisterEmail.text.toString()
                         val passw = editTextRegisterPassword.text.toString()
 
@@ -43,17 +49,24 @@ class RegisterActivity : AppCompatActivity() {
                             showAlert()
                         }
                     }
-
-//                FirebaseAuth.getInstance()
-//                    .createUserWithEmailAndPassword(editTextTextEmailAddress.text.toString(),
-//                        editTextTextPassword2.text.toString()).addOnCompleteListener {
-//                            if (it.isSuccessful){showHome(it.result?.user?.email ?: "", ProviderType.BASIC)}
-//                            else{showAlert()}
-//                    }
             }else{
                 showAlert()
             }
         }
+    }
+
+    private fun rememberUser(sp: SharedPreferences) {
+        val email = editTextRegisterEmail.text.toString()
+        val password = editTextRegisterPassword.text.toString()
+
+        with(sp.edit()){
+            putString("email", email)
+            putString("password", password)
+            putString("active", "true")
+
+            apply()
+        }
+        showHome(email, ProviderType.BASIC)
     }
 
     private fun showAlert(){
